@@ -1,0 +1,16 @@
+/* Apply a natural box layout model to all elements, but allowing components to change */
+html, body {
+	box-sizing: border-box;
+	font-family: $base-font;
+	font-size: $base-font-size;
+	color: $body-text;
+	background-color: $body-bg;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+a {
+	color: $body-link;
+}
