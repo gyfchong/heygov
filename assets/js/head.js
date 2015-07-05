@@ -1,0 +1,2 @@
+
+window.GULPBASE = window.GULPBASE || {};
