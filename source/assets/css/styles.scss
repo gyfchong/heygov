@@ -22,6 +22,7 @@ body, html {
 	flex-direction: column;
 	min-height: 100vh;
 	font-family: 'Open Sans';
+	color: #444;
 }
 
 h1,
@@ -509,11 +510,11 @@ header {
 		border-radius: 3px;
 
 		&.support {
-			background-color: green;
+			background-color: #558B2F;
 		}
 
 		&.disapprove {
-			background-color: red;
+			background-color: #C62828;
 		}
 
 		.label {
@@ -524,7 +525,7 @@ header {
 		.button {
 			@extend .u-cf;
 			display: block;
-			padding: 10px;
+			padding: 10px 12px;
 			color: #fff;
 
 			.label {
@@ -545,7 +546,7 @@ header {
 
 			.fa {
 				float: right;
-				padding: 6px 10px;
+				padding: 3px 0 0 10px;
 			}
 		}
 	}
