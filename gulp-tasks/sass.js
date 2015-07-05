@@ -1,6 +1,6 @@
 module.exports = function(gulp, plugins, config) {
 	return function() {
-		gulp.src(config.paths.source + 'css/**/*.scss')
+		gulp.src(config.paths.source + "css/styles.scss")
 			.pipe(plugins.plumber({
 				errorHandler: plugins.notify.onError('Error: <%= error.message %>')
 			}))
@@ -18,7 +18,7 @@ module.exports = function(gulp, plugins, config) {
 	            browsers: ['last 2 versions'],
 	            cascade: false
 	        }))
-			.pipe(gulp.dest(config.paths.build + 'css/'))
+			.pipe(gulp.dest(config.paths.build + "css"))
 			.pipe(plugins.browserSync.reload({stream: true}))
 			.pipe(plugins.notify('SCSS: DONE'));
 	}

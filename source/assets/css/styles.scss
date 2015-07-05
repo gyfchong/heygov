@@ -1,72 +1,569 @@
 // =====================================================================
 // STYLES
-// ---
-// Following the philosophy of @CSSwizadry's transparent ui namespaces
-// http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/
 // =====================================================================
-
-// Fonts
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400);
-
-// Globals
-
-@import "vendor/*";
-@import "vendor/font-awesome/font-awesome";
 
 @import "variables";
 
 @import "global";
 
+@import "vendor/*";
 
-// =====================================================================
-// UTILITIES
-// ---------------------------------------------------------------------
-// u-: Signify that this class is a Utility class. It has a very specific
-// role (often providing only one declaration) and should not be bound onto
-// or changed. It can be reused and is not tied to any specific piece of UI.
-// You will probably recognise this namespace from libraries and methodologies
-// like SUIT. (eg. .u-utility-class, .u-clearfix)
-// ---
-// http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/
-// =====================================================================
-@import "utilities";
+@import "vendor/font-awesome/font-awesome";
 
+$minerals: #5359a7;
+$urban-development: #66b445;
+$defence: #49bad2;
+$infrastructure: #da5e33;
+$health-education: #ea8735;
+$water-management: #273238;
 
+body, html {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	font-family: 'Open Sans';
+}
 
-// =====================================================================
-// THEMES
-// ---------------------------------------------------------------------
-// t-: Signify that a class is responsible for adding a Theme to a view.
-// It lets us know that UI Components’ current cosmetic appearance may
-// be due to the presence of a theme.
-// (eg. .t-theme-name, .t-light)
-// =====================================================================
-@import "themes/*";
+h1,
+h2,
+h3,
+h4 {
+	font-family: 'Lato';
+}
 
+a {
+	color: #3F51B5;
+}
 
+.wrap {
+	@extend .u-cf;
+	margin: 0 auto;
+	padding: 0 20px;
+	width: 960px;
+	position: relative;
+}
 
-// =====================================================================
-// OBJECTS
-// ---------------------------------------------------------------------
-// o-: Signify that something is an Object, and that it may be used in
-// any number of unrelated contexts to the one you can currently see it
-// in. Making modifications to these types of class could potentially have
-// knock-on effects in a lot of other unrelated places. Tread carefully.
-// (eg. .o-object-name, .o-layout)
-// =====================================================================
-@import "objects/*";
+.data-visual {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 20;
+	width: 100%;
+	height: 800px;
+	padding: 25px 0;
+	color: #444;
+	background-color: #fff;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+	
+	.wrap {
+		position: relative;
+	}
 
+	h1 {
+		margin: 0;
+	}
 
+	.close {
+		position: absolute;
+		top: 20px;
+		right: 0;
+		font-size: 30px;
+	}
 
-// =====================================================================
-// COMPONTENTS
-// ---------------------------------------------------------------------
-// c-: Signify that something is a Component. This is a concrete,
-// implementation-specific piece of UI. All of the changes you make to
-// its styles should be detectable in the context you’re currently looking
-// at. Modifying these styles should be safe and have no side effects.
-// (eg. .c-component-name, .c-hero-banner)
-// =====================================================================
-@import "components/*";
+	.highcharts-container {
+		width: 100%;
+		height: 400px;
+	}
+}
 
+.about-us {
+	display: none;
+	border-bottom: 1px solid #ccc;
 
+	.wrap {
+		display: flex;
+	}
+
+	h1 {
+		margin: 0;
+	}
+
+	.col {
+		flex: 1;
+		padding: 20px 0;
+		text-align: center;
+
+		&:first-child {
+			text-align: left;
+		}
+	}
+
+	.img {
+		display: block;
+		margin: 0 auto 10px;
+		width: 100px;
+		height: 100px;
+		border-radius: 99px;
+		overflow: hidden;
+
+		img {
+			height: 100px;
+		}
+	}
+
+	.albert {
+		img {
+			margin-left: -20px;
+		}
+	}
+}
+
+.main-header {
+	padding: 20px 0 15px; 
+	border-bottom: 5px solid #fff;
+	background-color: #fff;
+
+	.logo {
+		float: left;
+		padding-right: 20px;
+		font-family: 'Lato';
+		border-right: 1px solid #ccc;
+		text-decoration: none;
+		font-weight: 900;
+		color: #444;
+		font-size: 22px;
+	}
+
+	.search-form {
+		float: left;
+		padding-left: 20px;
+
+		input {
+			margin-top: -6px;
+			box-sizing: border-box;
+			padding: 5px 10px;
+			font-size: 16px;
+		}
+	}
+
+	.nav {
+		a {
+			font-weight: bold;
+			color: #444;
+		}
+	}
+
+	&.minerals-energy {
+		border-color: $minerals;
+	}
+
+	&.urban-development {
+		border-color: $urban-development;
+	}
+
+	&.defence {
+		border-color: $defence;
+	}
+
+	&.infrastructure {
+		border-color: $infrastructure;
+	}
+
+	&.health-education {
+		border-color: $health-education;
+	}
+
+	&.water-management {
+		border-color: $water-management;
+	}
+}
+
+.nav {
+	padding: 3px 0;
+	float: right;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			display: inline-block;
+			margin-left: 25px;
+		}
+	}
+}
+
+.main-content {
+	flex: 1;
+	padding-bottom: 25px;
+	background-color: #ededed;
+
+	section {
+		padding: 40px 0;
+	}
+}
+
+	.content-area {
+		margin-top: 25px;
+		padding: 25px;
+		background-color: #fff;
+	
+		header {
+			padding: 0 0 10px;
+
+			.title {
+				margin: 0;
+				padding-top: 10px;
+				border-top: 1px solid #ccc;
+			}
+		}
+
+		.top-meta {
+			margin-top: 10px;
+			font-size: 14px;
+			font-weight: bold;
+		}
+
+		.meta-data-sets {
+			margin: 30px 0;
+			padding-bottom: 25px;
+			border-top: 1px solid #ccc;
+			border-bottom: 1px solid #ccc;
+		}
+	}
+
+.hero {
+	position: relative;
+	text-align: center;
+	color: #fff;
+	overflow: hidden;
+
+	.darken-screen {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 6;
+		height: 100%;
+		width: 100%;
+		background-color: rgba(0,0,0,0.2);
+	}
+
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 5;
+		width: 100%;
+		height: 100%;
+		transform: scale(2);
+	}
+
+	.container {
+		position: relative;
+		z-index: 10;
+		margin: 300px 0 218px;
+		padding: 20px 10px 10px;
+	}
+
+	h1 {
+		margin-top: 0;
+		font-size: 45px;
+		text-shadow: 0 0 10px rgba(0,0,0,0.3);
+	}
+
+	.button {
+		display: inline-block;
+		margin-top: 40px;
+		padding-left: 40px;
+		padding-right: 40px;
+		background-color: rgba(0,0,0,0.5);
+
+		&:hover {
+			background-color: rgba(0,0,0,0.8);
+		}
+	}
+
+	.state-select {
+		text-shadow: 0 0 10px rgba(0,0,0,0.3);
+	}
+}
+
+.state-select {
+	padding: 5px;
+	background: none;
+}
+
+.categories {
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		.title {
+			margin: 0;
+		}
+
+		.total-projects {
+			display: none;
+			margin: 2.1px 0;
+  			line-height: 1;
+		}
+	}
+}
+
+.button {
+	padding: 20px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 3px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.4);
+
+	&:active {
+		box-shadow: none;
+	}
+}
+
+.category {
+	margin: 10px;
+	width: 280px;
+	border-radius: 3px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+
+	a {
+		display: block;
+		padding: 20px;
+		color: #fff;
+		text-decoration: none;
+		font-weight: bold;
+	}
+
+	&:hover {
+		cursor: pointer;
+
+		.title {
+			display: none;
+		}
+
+		.total-projects {
+			display: block;
+		}
+	}
+
+	.total-projects {
+		@extend .u-cf;
+		.label {
+			float: left;
+		}
+
+		.fa {
+			float: right;
+		}
+	}
+
+	&.minerals-energy {
+		background-color: $minerals;
+	}
+
+	&.urban-development {
+		background-color: $urban-development;
+	}
+
+	&.defence {
+		background-color: $defence;
+	}
+
+	&.infrastructure {
+		background-color: $infrastructure;
+	}
+
+	&.health-education {
+		background-color: $health-education;
+	}
+
+	&.water-management {
+		background-color: $water-management;
+	}
+}
+
+header {
+	padding: 20px 0;
+
+	.back {
+		display: inline-block;
+		margin-bottom: 10px;
+	}
+}
+
+.popular {
+	header {
+		@extend .u-cf;
+
+		.title {
+			float: left;
+			margin: 0;
+			font-variant: small-caps;
+		}
+
+		.view-more {
+			float: right;
+		}
+	}	
+}
+
+.tiles {
+	display: flex;
+	flex-wrap: wrap;
+
+	.tile {
+		width: 293px;
+		border-top: 5px solid;
+		border-left: 0;
+	}
+}
+
+	.tile {
+		@extend .u-cf;
+		width: 100%;
+		margin-bottom: 20px;
+		margin-right: 20px;
+		padding: 20px;
+		background-color: #fff;
+		border-left: 5px solid;
+
+		&:nth-of-type(3n+3) {
+			margin-right: 0;
+		}
+
+		.title {
+			margin-top: 0;
+			line-height: 1.5;
+			text-decoration: underline;
+		}
+
+		.description {
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+
+		& > a {
+			color: #444;
+			text-decoration: none;
+		}
+
+		&.minerals-energy {
+			border-color: $minerals;
+		}
+
+		&.urban-development {
+			border-color: $urban-development;
+		}
+
+		&.defence {
+			border-color: $defence;
+		}
+
+		&.infrastructure {
+			border-color: $infrastructure;
+		}
+
+		&.health-education {
+			border-color: $health-education;
+		}
+
+		&.water-management {
+			border-color: $water-management;
+		}
+	}
+
+.meta-data-sets {
+	@extend .u-cf;
+}
+
+.meta-data {
+	display: flex;
+	margin-top: 25px;
+
+	.data {
+		flex: 1;
+		margin-right: 25px;
+		font-size: 16px;
+		font-weight: bolder;
+		border-radius: 3px;
+
+		&.support {
+			background-color: green;
+		}
+
+		&.disapprove {
+			background-color: red;
+		}
+
+		.label {
+			display: block;
+			font-variant: small-caps;
+		}
+
+		.button {
+			@extend .u-cf;
+			display: block;
+			padding: 10px;
+			color: #fff;
+
+			.label {
+				display: block;
+				float: left;
+				padding: 4px 0;
+				font-variant: normal;
+			}
+
+			.number {
+				display: block;
+				float: right;
+				padding: 5px;
+				font-size: 14px;
+				background-color: rgba(0,0,0,0.2);
+				border-radius: 3px;
+			}
+
+			.fa {
+				float: right;
+				padding: 6px 10px;
+			}
+		}
+	}
+
+	
+
+	&.left {
+		float: left;
+		width: 50%;
+	}
+
+	&.right {
+		float: right;
+		width: 50%;
+	}
+}
+
+.main-footer {
+	@extend .u-cf;
+	padding: 25px 0;
+	color: #fff;
+	background-color: #444;
+
+	.copyright {
+		float: left;
+	}
+
+	.nav {
+		a {
+			color: #fff;
+		}
+	}
+}
