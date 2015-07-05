@@ -29,17 +29,17 @@
 				$('.data-visual').slideUp();
 			});
 
-			$('.support .button').on('click', function(e) {
+			$('.data .button').on('click', function(e) {
 				e.preventDefault();
 				var countNumber = parseInt($(this).find('.number').text());
 				$(this).find('.number').text(countNumber+1);
 			});
 
-			$('.disapprove .button').on('click', function(e) {
-				e.preventDefault();
-				var countNumber = parseInt($(this).find('.number').text());
-				$(this).find('.number').text(countNumber-1);
-			});
+			// $('.disapprove .button').on('click', function(e) {
+			// 	e.preventDefault();
+			// 	var countNumber = parseInt($(this).find('.number').text());
+			// 	$(this).find('.number').text(countNumber-1);
+			// });
 		};
 
 		return {
